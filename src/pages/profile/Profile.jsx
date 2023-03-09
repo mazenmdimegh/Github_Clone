@@ -7,7 +7,7 @@ function Profile() {
   return (
     <div>
         <NavBar/>
-        <div className='d-flex'>
+        <div className='d-flex justify-content-center'>
             <LeftSIde/>
             <RightSide/>
         </div>

@@ -1,18 +1,59 @@
-.avatar{
+.avatar {
     border-radius: 100%;
-    width: 27vw;
-    max-width: 370px;
-    margin-top: -20px;
+    width: 300px;
+    margin-top: -38px;
 }
-.LeftSIdeWrapper{
+
+.LeftSIdeWrapper {
     z-index: 2;
-    
+
 }
-.Edit{
+
+.Edit {
     width: 100%;
     height: 36px;
     font-size: 19px;
     font-weight: 500;
     color: black;
-    
+
+}
+
+.rightSide {
+    width: 1012px;
+}
+
+.form-row {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    // margin: 17px -5px;
+    .form-control {
+        padding: 6px 5px;
+        font-size: 13px;
+        
+    }
+}
+
+.btn-group {
+    padding: 0 2px;
+    .btn1{
+        margin-left: 25px;
+    }
+    button {
+        border-radius: 6px !important;
+        background-color: #f6f8fa;
+        color: rgb(82, 82, 82);
+        border-color: #d1d0d0;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 2px 15px;
+
+    }
+    button:hover{
+        background-color: #f2efef;
+        color: rgb(82, 82, 82);
+        border-color: #d1d0d0;
+
+
+    }
 }
