@@ -3,14 +3,17 @@ import RepoDetails from '../../components/RepoDetails/RepoDetails'
 
 
 export interface RightSideProps {
-  data: Record<string, any>;
+  repositories: Record<string, any>;
+  isLoading: boolean;
 }
 
 
 function RightSide(props: RightSideProps) {
-  const { data } = props;
-  console.log("from child data",data)
-
+  const { repositories, isLoading } = props;
+  // console.log(isLoading)
+  if (repositories) {
+    console.log("from child data", repositories)
+  }
   return (
     <div className='rightSide'>
       <form>
@@ -42,9 +45,22 @@ function RightSide(props: RightSideProps) {
           </div>
         </div>
       </form>
-      <RepoDetails/>
-      <RepoDetails/>
-      <RepoDetails/>
+      {repositories.map((repo: any) =>
+      (<div key={repo.id}>
+        <RepoDetails
+          isLoading={isLoading}
+          repos={repo}
+        // id={repo.id}
+        // name={repo.name}
+        // url={repo.url}
+        // primaryLanguage={repo.primaryLanguage}
+        // forkCount={repo.forkCount}
+        // updatedAt={repo.updatedAt}
+        // description={repo.description}
+        />
+      </div>))
+      }
+
     </div>
   )
 }

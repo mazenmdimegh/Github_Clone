@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import LeftSIde from './LeftSIde'
 import RightSide, { RightSideProps } from './rightSide'
@@ -11,13 +11,15 @@ import NotFound from '../../components/NotFound/NotFound'
 
 const Profile: React.FC = () => {
   const [data, setData] = useState<null | Record<string, any>>(null);
-  const [repositories, setRepositories] = useState<null | Record<string, any>>(null);
+  // const [repositories, setRepositories] = useState<null | Record<string, any>>(null);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
   const token: string | null = window.sessionStorage.getItem("token")
   console.log(token)
-  // const token = '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';
+
+  //Headers of the Http Request
   const client = new ApolloClient({
     uri: 'https://api.github.com/graphql',
     headers: {
@@ -26,17 +28,25 @@ const Profile: React.FC = () => {
     cache: new InMemoryCache(),
   });
 
-  client.query({
-    query: GetRepositories,
-  })
-    .then(result => {
-      // setRepositories(result.data);
-      console.log(result.data)
+  useEffect(() => {
+    //Query choice
+    client.query({
+      query: GetRepositories,
     })
-    .catch(error => {
-      console.error(error);
-      setError(true);
-    });
+      .then(result => {
+        setTimeout(() => {
+          setLoading(false)
+          console.log("Delayed for 1 second.");
+        }, 500);
+        setData(result.data);
+        console.log(result.data)
+      })
+      .catch(error => {
+        setLoading(false)
+        console.error(error);
+        setError(true);
+      });
+  }, []);
 
   return (
     <div>
@@ -71,7 +81,7 @@ const Profile: React.FC = () => {
         <NavBar />
         <div className='d-flex justify-content-center mx-lg-5 px-5'>
           <LeftSIde />
-          <RightSide data={repositories as RightSideProps['data']} />
+          {data && <RightSide isLoading={loading} repositories={data["viewer"].repositories.nodes as RightSideProps['repositories']} />}
         </div>
       </div>
     </div>

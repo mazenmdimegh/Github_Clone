@@ -1,17 +1,19 @@
-import {gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-export const GetRepositories = 
-gql`
+export const GetRepositories =
+    gql`
     query {
       viewer {
         repositories(first: 100) {
           nodes {
             name
             url
-            primaryLanguage {
-              name
+            forkCount
+            updatedAt
+            description
+            primaryLanguage{
+                name
             }
-            createdAt
           }
         }
       }
