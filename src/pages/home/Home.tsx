@@ -9,7 +9,8 @@ import { useNavigate } from 'react-router-dom';
 //   useNavigate.("/products");
 
 // }
-function Home() {
+const Home: React.FC = () => {
+
 const navigate = useNavigate();
 
   return (
@@ -26,16 +27,15 @@ const navigate = useNavigate();
           const token = target.token.value;
           if (token!=""){
             //store The Token in The Session Storage
-            window.sessionStorage.setItem("token", JSON.stringify(token))
-            // const item = window.sessionStorage.getItem(key)
-            navigate('/products');
+            window.sessionStorage.setItem("token", token)
+            navigate('/profile');
           }
         }}>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Your Github Personal Token :</label>
             <input type="text" name="token" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Token"/>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary w-100">Submit</button>
         </form>
       </div>
     </div>

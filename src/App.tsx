@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, BrowserRouter, Routes } from "rea
 import Home from './pages/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './pages/profile/Profile';
+import NotFound from './components/NotFound/NotFound';
 
 
 
@@ -29,7 +30,8 @@ function App() {
 
           <Route path="/" element={<Home/> } />
           {/* <Route path="/" element={Index } ><h2>Home</h2> </Route> */}
-          <Route path="/products" element={<Profile/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/NotFound" element={<NotFound/>} />
         </Routes>
       </div>
     </BrowserRouter>

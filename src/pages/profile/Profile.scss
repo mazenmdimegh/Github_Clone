@@ -6,7 +6,25 @@
 
 .LeftSIdeWrapper {
     z-index: 2;
+    padding-right: 30px;
+    button {
+        // border-radius: 6px !important;
+        background-color: #f6f8fa;
+        color: rgb(82, 82, 82);
+        border-color: #d1d0d0;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 2px 15px;
 
+    }
+
+    button:hover {
+        background-color: #f2efef;
+        color: rgb(82, 82, 82);
+        border-color: #d1d0d0;
+
+
+    }
 }
 
 .Edit {
@@ -15,6 +33,7 @@
     font-size: 19px;
     font-weight: 500;
     color: black;
+    border-radius: 6px !important;
 
 }
 
@@ -24,21 +43,27 @@
 
 .form-row {
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    // margin: 17px -5px;
+    // -ms-flex-wrap: wrap;
+    // flex-wrap: wrap;
+
+    .form-group{
+        width: 100%;
+    }
     .form-control {
         padding: 6px 5px;
         font-size: 13px;
-        
+
     }
 }
 
-.btn-group {
+.btn-groupp {
     padding: 0 2px;
-    .btn1{
+    display: flex;
+
+    .btn1 {
         margin-left: 25px;
     }
+
     button {
         border-radius: 6px !important;
         background-color: #f6f8fa;
@@ -49,11 +74,19 @@
         padding: 2px 15px;
 
     }
-    button:hover{
+
+    button:hover {
         background-color: #f2efef;
         color: rgb(82, 82, 82);
         border-color: #d1d0d0;
 
 
     }
+}
+.Pro{
+    font-size: 11px;
+    border-radius: 40px;
+    font-weight: 500;
+    border-color: rgb(37, 42, 138) !important;
+    padding: 1px 8px;
 }
