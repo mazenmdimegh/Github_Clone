@@ -18,7 +18,7 @@ const Profile: React.FC = () => {
 
   // const navigate = useNavigate();
   const token: string | null = window.sessionStorage.getItem("token")
-  console.log(token)
+  // console.log(token)
 
   //Headers of the Http Request
   const client = new ApolloClient({

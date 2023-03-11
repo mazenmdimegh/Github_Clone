@@ -18,7 +18,9 @@ function RepoDetails(props: ChildComponentProps) {
     const [languageName, setLanguageName] = useState<null | Record<string, any>>();
 
     useEffect(() => {
-        repos ? setLanguageName((repos.primaryLanguage)) : console.log("norepo");
+        if (repos) { 
+            setLanguageName((repos.primaryLanguage)) 
+        }
         // languageName ?console.log('colorr',languages[languageName["name"]["color"]]) : console.log("no Color");
 
     }, []);
@@ -29,12 +31,12 @@ function RepoDetails(props: ChildComponentProps) {
             {repos ? <div className='d-flex border-bottom justify-content-between py-3'>
                 <div>
                     <div className='d-flex align-items-baseline'>
-                        <h4 className='text-primary text-capitalize '><a className='title' href={repos.url}>{repos.name}</a> </h4>
-                       {!repos.isPrivate? 
-                       <p className='Public border text-secondary  mx-2 px-1'>Public</p>
-                       :
-                       <p className='Public border text-secondary  mx-2 px-1'>Private</p>
-                    }
+                        <h5 className='text-primary text-capitalize '><a className='title' href={repos.url}>{repos.name}</a> </h5>
+                        {!repos.isPrivate ?
+                            <p className='Public border text-secondary  mx-2 px-1'>Public</p>
+                            :
+                            <p className='Public border text-secondary  mx-2 px-1'>Private</p>
+                        }
                     </div>
                     <p>{repos.description}</p>
                     {languageName && <p className='language text-secondary'>
