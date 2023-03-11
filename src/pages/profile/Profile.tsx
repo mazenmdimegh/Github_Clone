@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
-import LeftSIde from './LeftSIde'
-import RightSide, { RightSideProps } from './rightSide'
+import LeftSIde, { LeftSideProps } from './LeftSIde'
+import RightSide from './rightSide'
 import "./Profile.scss"
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, gql, ApolloProvider } from '@apollo/client';
 import { useNavigate } from 'react-router-dom'
 import { GetRepositories } from '../../queries/queries'
 import NotFound from '../../components/NotFound/NotFound'
@@ -11,7 +11,8 @@ import NotFound from '../../components/NotFound/NotFound'
 
 const Profile: React.FC = () => {
   const [data, setData] = useState<null | Record<string, any>>(null);
-  // const [repositories, setRepositories] = useState<null | Record<string, any>>(null);
+  const [repositories, setRepositories] = useState<null | Record<string, any>>(null);
+  const [userDetails, setUserDetails] = useState<null | Record<string, any>>(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +39,10 @@ const Profile: React.FC = () => {
           setLoading(false)
           console.log("Delayed for 1 second.");
         }, 500);
+        setRepositories(result.data["viewer"].repositories.nodes)
+        setUserDetails(result.data["viewer"]);
         setData(result.data);
+        window.sessionStorage.setItem("username", result.data["viewer"].login)
         console.log(result.data)
       })
       .catch(error => {
@@ -50,40 +54,18 @@ const Profile: React.FC = () => {
 
   return (
     <div>
-      {/* {data ?
-        // <ChildComponent data={data as ChildComponentProps['data']} />
-        <div>
-          <NavBar />
-          <div className='d-flex justify-content-center mx-lg-5 px-5'>
-            <LeftSIde />
-            {/* <RightSide data={data as RightSideProps['data']} /> /}
-          </div>
-        </div>
-        :
-        <div>
-          <NotFound />
-        </div>} */}
-      {/* {!error &&
-        <div>
-          <NavBar />
-          <div className='d-flex justify-content-center mx-lg-5 px-5'>
-            <LeftSIde />
-            <RightSide data={data as RightSideProps['data']}/>
-          </div>
-        </div>
-      }
-      {error &&
-        <div>
-          <NotFound/>
-        </div>
-      } */}
+      <ApolloProvider client={client}>
       <div>
         <NavBar />
         <div className='d-flex justify-content-center mx-lg-5 px-5'>
-          <LeftSIde />
-          {data && <RightSide isLoading={loading} repositories={data["viewer"].repositories.nodes as RightSideProps['repositories']} />}
+          <LeftSIde isLoading={loading} userDetails={userDetails as LeftSideProps['userDetails']}/>
+           <RightSide 
+          //  isLoading={loading} 
+          //  repositories={repositories as RightSideProps['repositories']} 
+           />
         </div>
       </div>
+      </ApolloProvider>
     </div>
   )
 }

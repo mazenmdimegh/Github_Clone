@@ -1,45 +1,51 @@
 import { Icon } from '@iconify/react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton';
+import { calculateDaysSince } from '../../helpers/calculateDaysSince';
+import { languages } from '../../helpers/LanguageDictionary';
 import { RepoModel } from '../../models/RepoModel';
 import "./RepoDetails.scss"
+import { Language } from './styles';
 
 export interface ChildComponentProps {
-    repos: RepoModel;
+    repos?: RepoModel;
     isLoading: boolean;
 }
 
 function RepoDetails(props: ChildComponentProps) {
-    const { repos ,isLoading} = props;
-    useEffect(() => {
-        // repos ?
-        // console.log("from RepoDetails", repos.name)
-        //     :
-        //     console.log("null", id)
 
-    }, [repos]);
+    const { repos, isLoading } = props;
+    const [languageName, setLanguageName] = useState<null | Record<string, any>>();
+
+    useEffect(() => {
+        repos ? setLanguageName((repos.primaryLanguage)) : console.log("norepo");
+        // languageName ?console.log('colorr',languages[languageName["name"]["color"]]) : console.log("no Color");
+
+    }, []);
+    // languageName ?console.log('colorr',languages[languageName["name"]]["color"]) : console.log("no Color");
 
     return (
         <div>
-            {!isLoading ? <div className='d-flex border-bottom justify-content-between py-3'>
+            {repos ? <div className='d-flex border-bottom justify-content-between py-3'>
                 <div>
                     <div className='d-flex align-items-baseline'>
-                        <h5 className='text-primary'>{repos.name} </h5>
-                        {/* <Skeleton style={{ width: 100 }} /> */}
-                        <p className='Public border text-secondary  mx-2 px-1'>Public</p>
+                        <h4 className='text-primary text-capitalize '><a className='title' href={repos.url}>{repos.name}</a> </h4>
+                       {!repos.isPrivate? 
+                       <p className='Public border text-secondary  mx-2 px-1'>Public</p>
+                       :
+                       <p className='Public border text-secondary  mx-2 px-1'>Private</p>
+                    }
                     </div>
-                    <p className='language'><span className="repo-language-color" ></span> {repos.description} <span className='px-3'>Updated 19 hours ago</span></p>
-                    {/* <Skeleton /> */}
-
+                    <p>{repos.description}</p>
+                    {languageName && <p className='language text-secondary'>
+                        <Language colorr={languageName ? languages[languageName["name"]]["color"] : "#fff"} />{languageName["name"]}  <span className='px-3'>Updated {calculateDaysSince(repos.updatedAt)}</span></p>}
                 </div>
                 <div>
                     <div className="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <button type="button" className="btn btn-secondary d-flex justify-content-center align-items-center py-1">
                             <Icon icon="octicon:star-16" width="16" /><a className="nav-link text-dark px-2" href="#">Star</a></button>
-
                         <div className="btn-group" role="group">
                             <button id="btnGroupDrop1" type="button" className="btn btn-secondary dropdown-toggle align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                             </button>
                             <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <a className="dropdown-item" href="#">Dropdown link</a>
@@ -53,22 +59,17 @@ function RepoDetails(props: ChildComponentProps) {
                 <div className='d-flex border-bottom justify-content-between py-3'>
                     <div>
                         <div className='d-flex align-items-baseline'>
-                            {/* <h4 className='text-primary'>Github_Clone </h4> */}
                             <Skeleton style={{ width: 100 }} />
                             <p className='Public border text-secondary  mx-2 px-1'>Public</p>
                         </div>
-                        {/* <p className='language'><span className="repo-language-color" ></span> TypeScript <span className='px-3'>Updated 19 hours ago</span></p> */}
                         <Skeleton />
-
                     </div>
                     <div>
                         <div className="btn-group" role="group" aria-label="Button group with nested dropdown">
                             <button type="button" className="btn btn-secondary d-flex justify-content-center align-items-center py-1">
                                 <Icon icon="octicon:star-16" width="16" /><a className="nav-link text-dark px-2" href="#">Star</a></button>
-
                             <div className="btn-group" role="group">
                                 <button id="btnGroupDrop1" type="button" className="btn btn-secondary dropdown-toggle align-items-center" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                                 </button>
                                 <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     <a className="dropdown-item" href="#">Dropdown link</a>
