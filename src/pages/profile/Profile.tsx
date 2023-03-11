@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from '../../components/NavBar/NavBar'
-import LeftSIde, { LeftSideProps } from './LeftSIde'
+import NavBar, { HeaderProps } from '../../components/NavBar/NavBar'
+import LeftSIde from './LeftSIde'
 import RightSide from './rightSide'
 import "./Profile.scss"
 import { ApolloClient, InMemoryCache, gql, ApolloProvider } from '@apollo/client';
 import { useNavigate } from 'react-router-dom'
-import { GetRepositories } from '../../queries/queries'
+import { GetRepositories, GetRepositoryCount } from '../../queries/queries'
 import NotFound from '../../components/NotFound/NotFound'
 
 
 const Profile: React.FC = () => {
-  const [data, setData] = useState<null | Record<string, any>>(null);
-  const [repositories, setRepositories] = useState<null | Record<string, any>>(null);
-  const [userDetails, setUserDetails] = useState<null | Record<string, any>>(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [data, setData] = useState<null | Record<string, any>>(null);
+  // const [repositories, setRepositories] = useState<null | Record<string, any>>(null);
+  // const [userDetails, setUserDetails] = useState<null | Record<string, any>>(null);
+  const [length, setLength] = useState(0);
+  // const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const token: string | null = window.sessionStorage.getItem("token")
   console.log(token)
 
@@ -32,40 +32,25 @@ const Profile: React.FC = () => {
   useEffect(() => {
     //Query choice
     client.query({
-      query: GetRepositories,
+      query: GetRepositoryCount,
     })
       .then(result => {
-        setTimeout(() => {
-          setLoading(false)
-          console.log("Delayed for 1 second.");
-        }, 500);
-        setRepositories(result.data["viewer"].repositories.nodes)
-        setUserDetails(result.data["viewer"]);
-        setData(result.data);
-        window.sessionStorage.setItem("username", result.data["viewer"].login)
-        console.log(result.data)
+        setLength(result.data["viewer"].repositories.totalCount)
       })
       .catch(error => {
-        setLoading(false)
         console.error(error);
-        setError(true);
       });
   }, []);
 
   return (
     <div>
-      <ApolloProvider client={client}>
       <div>
-        <NavBar />
+        <NavBar length={length as HeaderProps['length']}/>
         <div className='d-flex justify-content-center mx-lg-5 px-5'>
-          <LeftSIde isLoading={loading} userDetails={userDetails as LeftSideProps['userDetails']}/>
-           <RightSide 
-          //  isLoading={loading} 
-          //  repositories={repositories as RightSideProps['repositories']} 
-           />
+          <LeftSIde />
+           <RightSide />
         </div>
       </div>
-      </ApolloProvider>
     </div>
   )
 }

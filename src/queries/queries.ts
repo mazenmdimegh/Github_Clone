@@ -86,3 +86,12 @@ export function SearchUserRepositories(
   }
 }
 `};
+export const GetRepositoryCount = gql`
+query {
+  viewer {
+    repositories {
+      totalCount
+    }
+  }
+}
+`;

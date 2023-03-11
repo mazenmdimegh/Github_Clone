@@ -2,9 +2,12 @@ import React from 'react'
 import { FiBookOpen } from 'react-icons/fi'
 import './NavBar.scss'
 import { Icon } from '@iconify/react';
-
-const NavBar: React.FC = () => {
-
+export interface HeaderProps {
+    //   // repositories: Record<string, any>;
+    length: number;
+}
+function NavBar(props: HeaderProps) {
+    const { length } = props;
     return (
         <nav className="navbar navbar-expand-lg navbar-light border-bottom mt-2 ">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +22,7 @@ const NavBar: React.FC = () => {
                         <Icon icon="octicon:book-16" width="16" /><a className="nav-link text-dark" href="#">Overview <span className="sr-only"></span></a>
                     </li>
                     <li className="nav-item active d-flex align-items-center mx-2">
-                        <Icon icon="octicon:repo-16" width="18" /> <a className="nav-link text-dark" href="#">Repositories</a>
+                        <Icon icon="octicon:repo-16" width="18" /> <a className="nav-link text-dark" href="#">Repositories<span className='len'>{length}</span> </a>
                     </li>
                     <li className="nav-item d-flex align-items-center mx-2">
                         <Icon icon="octicon:table-16" width="16" /> <a className="nav-link text-dark" href="#">Projects</a>

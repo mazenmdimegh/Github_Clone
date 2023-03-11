@@ -4,7 +4,7 @@ import RepoDetails from '../../components/RepoDetails/RepoDetails'
 import { GetRepositories, SearchUserRepositories } from '../../queries/queries';
 
 
-// export interface RightSideProps {
+// export interface HeaderProps {
 //   // repositories: Record<string, any>;
 //   isLoading: boolean;
 // }
