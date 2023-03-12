@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import NavBar, { HeaderProps } from '../../components/NavBar/NavBar'
+
 import LeftSIde from './LeftSIde'
 import RightSide from './rightSide'
-import "./Profile.scss"
+// import "./Profile.scss"
 import { ApolloClient, InMemoryCache, gql, ApolloProvider } from '@apollo/client';
 import { useNavigate } from 'react-router-dom'
-import { GetRepositories, GetRepositoryCount } from '../../queries/queries'
-import NotFound from '../../components/NotFound/NotFound'
+import { GetRepositoryCount, GetUserDetails } from '../../queries/queries'
+import NotFound from '../../components/NotFound'
+import NavBar, { HeaderProps } from '../../components/NavBar';
 
 
 const Profile: React.FC = () => {
@@ -16,7 +17,7 @@ const Profile: React.FC = () => {
   const [length, setLength] = useState(0);
   // const [loading, setLoading] = useState(true);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const token: string | null = window.sessionStorage.getItem("token")
   // console.log(token)
 
@@ -39,6 +40,7 @@ const Profile: React.FC = () => {
       })
       .catch(error => {
         console.error(error);
+        navigate('/NotFound')
       });
   }, []);
 

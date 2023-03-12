@@ -1,21 +1,21 @@
 import React from 'react'
-import './NotFound.scss'
-import { AiFillGithub } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
+import { Icon } from '@iconify/react';
+import { ErrorWrapper, NotFoundContainer } from './styles';
 
 const NotFound: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <div className='notFoundContainer'>
-            <div className='errorWrapper d-grid justify-items-center text-center'>
-                <AiFillGithub />
+        <NotFoundContainer>
+            <ErrorWrapper className='d-grid justify-items-center text-center'>
+                <Icon icon="mdi:github" color="black" width={100}/>
                 <h3 className='text-light'>Unable to access GitHub API : bad credentials</h3>
                 <div className='formContainer'>
                     <button className="btn btn-primary" onClick={() => navigate('/')}>Back Home</button>
                 </div>
-            </div>
-        </div>
+            </ErrorWrapper>
+        </NotFoundContainer>
     )
 }
 

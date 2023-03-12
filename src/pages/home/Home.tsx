@@ -1,24 +1,19 @@
 import React from 'react'
-import "./Home.scss";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { AiFillGithub } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
-// const handleCLick = () => {
-//   console.log('submiit')
-//   useNavigate.("/products");
+import { BtnPrimary, Formm, HomeContainer, Label } from './styles';
+import { Icon } from '@iconify/react';
 
-// }
+
 const Home: React.FC = () => {
 
 const navigate = useNavigate();
 
   return (
-    <div className='homeContainer'>
-      <AiFillGithub />
+    <HomeContainer>
+      <Icon icon="mdi:github" color="black" width={100}/>
       <h3>welcome to Github</h3>
       <div className='formContainer'>
-        <form
+        <Formm
         onSubmit={(e: React.SyntheticEvent) => {
           e.preventDefault();
           const target = e.target as typeof e.target & {
@@ -32,13 +27,13 @@ const navigate = useNavigate();
           }
         }}>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Your Github Personal Token :</label>
-            <input type="text" name="token" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Token"/>
+            <Label htmlFor="exampleInputEmail1">Your Github Personal Token :</Label>
+            <input type="text" name="token" className="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Token"/>
           </div>
-          <button type="submit" className="btn btn-primary w-100">Submit</button>
-        </form>
+          <BtnPrimary type="submit" className="btn btn-primary w-100">Submit</BtnPrimary>
+        </Formm>
       </div>
-    </div>
+    </HomeContainer>
   )
 }
 

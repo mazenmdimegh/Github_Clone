@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, BrowserRouter, Routes } from "rea
 import Home from './pages/home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from './pages/profile/Profile';
-import NotFound from './components/NotFound/NotFound';
+import NotFound from './components/NotFound';
 
 
 

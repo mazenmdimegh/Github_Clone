@@ -1,38 +1,32 @@
-//  svg{
-//     width: 20px;
-//     height: 20px;
-//     margin-top: 0px ;
-// } 
-// li{
-//     display: flex;
-//     align-items: center;
-// }
-.active{
+import styled from "styled-components";
+
+
+export const Active = styled.li`
     font-weight: 600;
     border-bottom: 2px solid #ff9494;
     margin-bottom: -9px;
     padding-bottom: 6px;
-}
-.len{
+`;
+export const Len = styled.span`
     background-color: #ededed;
     margin-left: 11px;
     border-radius: 50%;
     padding: 4px 5px 4px 5px;
     font-size: 11px;
-}
-.rightNav{
-    // width: 390px;
+`;
+export const RightNav = styled.div`
     height: 20px;
-    min-width: 396px;
+    min-width: 444px;
     max-width: 471px;
-}
-.navbar{
+`;
+export const Navbar = styled.nav`
     color: grey;
     font-size: 14px;
     display: flex;
     justify-content: center;
-}
-.collapse{
+
+`;
+export const Collapse = styled.div`
     width: 820px;
-    max-width: 1010px;
-}
+    max-width: 979px;
+`;
