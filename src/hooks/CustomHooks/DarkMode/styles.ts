@@ -77,6 +77,7 @@ export const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
   .w-100 >input {
     background-color:${({ theme }) => theme.btnstyle} !important;
     border:${({ theme }) => theme.borderinput};
+    color:${({ theme }) => theme.text};
     
   }
 
