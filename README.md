@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Github Clone Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web application that allows users to search through GitHub repositories by name, using a search bar. The application is written using React and Typescript, and utilizes the official GitHub API to fetch repositories per user. The interface is responsive, and follows good user experience principles. Additionally, the code is documented.
 
-## Available Scripts
+![image (2)](https://user-images.githubusercontent.com/87076261/224579213-b89078a6-d015-4811-ac23-0c30ea11172f.jpg)
 
-In the project directory, you can run:
+![image (4)](https://user-images.githubusercontent.com/87076261/224579218-9badff3d-8710-4c7a-873e-15fa4e82c3c5.jpg)
 
-### `npm start`
+![image](https://user-images.githubusercontent.com/87076261/224579323-d7bb8fd0-6ce3-4b07-aaae-cce17751decc.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](https://user-images.githubusercontent.com/87076261/224579381-9e628cda-18f0-42aa-a7c9-535a4f7a3c9e.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![image](https://user-images.githubusercontent.com/87076261/224579417-b3557d26-b192-4bd8-9412-36a07921321d.png)
 
-### `npm test`
+![image](https://user-images.githubusercontent.com/87076261/224579477-c5d52f6a-4505-4d8b-8a9a-4af47757396d.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Potential Future improvements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Add pagination
+- Add error handling
+- Add sorting options for the results (Last updated, Name, Stars ...)
+- Add support for advanced search queries
+- Improve the responsiveness of the code
+- Add support for search by language, stars, and forks
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setup Instructions
 
-### `npm run eject`
+1. Install the dependencies
+    ```sh
+    npm install
+    ```
+2. Start the application
+    ```sh
+    npm start
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Running the test suite
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To run the test suite, you need to make sure that the dependencies are installed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Install the dependencies
+    ```sh
+    npm install
+    ```
+2. Run the test suite
+    ```sh
+    npm test
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Deployment
 
-## Learn More
+The project is deployed [here](https://github-clone-chi-lemon.vercel.app/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Feedback
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was an enjoyable and challenging exercise in my React and Typescript skills. I enjoyed the challenge of working with the GitHub API, and am proud of the end result.
