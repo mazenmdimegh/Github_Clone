@@ -14,6 +14,10 @@ export const Dropdown = styled.div`
     margin: 8px 0 16px 0;
     font-size: 12px;
     padding-bottom: 0;
+      @media(max-width:990px){
+        width: 123px;
+      left: -46px!important;
+    }
 
   `;
 export const DropdownLanguage = styled.div`
@@ -29,6 +33,10 @@ export const DropdownLanguage = styled.div`
     margin: 8px 0 16px 0;
     font-size: 12px;
     padding-bottom: 0;
+    @media(max-width:990px){
+      width: 144px;
+      left: -38px !important;
+  }
 
   `;
 export const DropdownItem = styled.a`

@@ -206,7 +206,7 @@ const RightSide: React.FC = () => {
           />
         </div>
       }
-      <GitHubCalendar username="mazenmdimegh" />
+      <GitHubCalendar username={username}/>
     </RightSideWrapper>
   )
 }
