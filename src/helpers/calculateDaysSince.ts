@@ -21,7 +21,6 @@ export function calculateDaysSince(dateString: string): string {
         const diffDaysInMonth = diffDays % 30;
         const month = date.toLocaleString('default', { month: 'long' });
         const day = date.getDate();
-        // const daySuffix = getDaySuffix(day);
         return `on ${month.slice(0,3)} ${day}`;
     }
 }

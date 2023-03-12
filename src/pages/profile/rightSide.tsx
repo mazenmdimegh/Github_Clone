@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import RepoDetails from '../../components/RepoDetails/RepoDetails'
 import { GetUserDetails, SearchUserRepositoriesBytypeAndByLanguage } from '../../queries/queries';
 import { Button, Clear, Container, Dropdown, DropdownItem, DropdownLanguage, Results, RightSideWrapper, Select, FormControlWrapper, BtnGroupp, BtnGrouppBtn } from './styles';
-
+import noRep from "../../assets/images/noRepositories.png"
 
 const RightSide: React.FC = () => {
 
@@ -84,9 +84,9 @@ const RightSide: React.FC = () => {
 
   // Defining event handlers for input changes and button clicks
   const handlechange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      // updates the state of 'keyword' with the value typed in the input box
+    // updates the state of 'keyword' with the value typed in the input box
     setKeyword(event.target.value)
-      // checks if the input box is empty, and sets 'searching' state accordingly
+    // checks if the input box is empty, and sets 'searching' state accordingly
     if (event.target.value == "") {
       setSearching(false);
     } else {
@@ -95,7 +95,7 @@ const RightSide: React.FC = () => {
   }
 
   const handleSearchByType = (type: any) => {
-      // updates the state of 'typeSearch' with the selected type
+    // updates the state of 'typeSearch' with the selected type
     if (type == "ALL") {
       settypeSearch("ALL")
     } else settypeSearch(type)
@@ -107,7 +107,7 @@ const RightSide: React.FC = () => {
     } else setlanguageSearch(language)
   }
   const handleClear = () => {
-     // clears all the search fields and sets 'searching' state to false
+    // clears all the search fields and sets 'searching' state to false
     setKeyword("");
     settypeSearch("ALL");
     setlanguageSearch("ALL");
@@ -118,12 +118,12 @@ const RightSide: React.FC = () => {
       <form>
         <div className="d-flex border-bottom py-3">
           <FormControlWrapper className="w-100">
-          {/*  input box for entering search keyword */}
+            {/*  input box for entering search keyword */}
             <input type="text" className="form-control " value={keyWord} onChange={handlechange} id="inputCity" placeholder='Find a repository...' />
           </FormControlWrapper>
 
           <BtnGroupp role="group" aria-label="Button group with nested dropdown">
-          {/*  dropdown for selecting repository type to filter */}
+            {/*  dropdown for selecting repository type to filter */}
             <BtnGrouppBtn role="group">
               <Button id="btnGroupDrop1" type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Type
@@ -135,7 +135,7 @@ const RightSide: React.FC = () => {
                   // if the type is selected, display it with a check icon
                   <DropdownItem className="dropdown-item border-bottom " ><span className='px-2'><Icon icon="material-symbols:check" width={18} /></span>{reptype.toLowerCase()}</DropdownItem>
                   :
-                   // if the type is not selected, display it as clickable option
+                  // if the type is not selected, display it as clickable option
                   <DropdownItem className="dropdown-item border-bottom px-3" onClick={() => handleSearchByType(reptype)}><span className='px-4'>{reptype.toLowerCase()}</span></DropdownItem>
                 )
                 )}
@@ -165,16 +165,24 @@ const RightSide: React.FC = () => {
         </div>
       </form>
       {searching && repositories ?
-        <Container>
-          <Results><strong>{repositories.length}</strong> results for repositories matching <strong>{keyWord}</strong> sorted by <strong>last updated</strong>
-          </Results>
-          <Clear onClick={handleClear}>
-            <Icon icon="zondicons:close-solid" className='px-1' color="#57606a" width={28} />
-            <div>Clear filter</div>
-          </Clear>
-        </Container>
+        <div >
+          <Container>
+            <Results><strong>{repositories.length}</strong> results for repositories matching <strong>{keyWord}</strong> sorted by <strong>last updated</strong>
+            </Results>
+            <Clear onClick={handleClear}>
+              <Icon icon="zondicons:close-solid" className='px-1' color="#57606a" width={28} />
+              <div>Clear filter</div>
+            </Clear>
+          </Container>
+          {repositories.length == 0 &&
+            <div className='text-center'>
+              <img className='w-50 m-auto py-2' src={noRep} alt="No repositories" />
+              <h5 className='m-auto py-2 text-secondary'>No repositories found</h5>
+            </div>
+          }
+        </div>
         : <div></div>}
-        {/* // If repositories is truthy, map through the repositories and display each repo details */}
+      {/* // If repositories is truthy, map through the repositories and display each repo details */}
       {repositories ?
         repositories.map((repo: any) =>
         (<div key={repo.id}>
@@ -184,7 +192,7 @@ const RightSide: React.FC = () => {
           />
         </div>))
         :
-            // If repositories is falsy, show three repo details components with isLoading prop set to true to load Skeleton
+        // If repositories is falsy, show three repo details components with isLoading prop set to true to load Skeleton
         <div>
           <RepoDetails
             isLoading={true}

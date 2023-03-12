@@ -23,7 +23,7 @@ export const GetUserDetails = gql`
     }
   `;
 
-  
+
   // Query to get repository count of a user
 export const GetRepositoryCount = gql`
 query {
@@ -76,72 +76,3 @@ export function SearchUserRepositoriesBytypeAndByLanguage(
     }
   }
 `};
-
-
-// export const GetRepositories = gql`
-//     query {
-//       viewer {
-//         name
-//         email
-//         login
-//         avatarUrl
-//         bio
-//         websiteUrl
-//         location
-//         followers {
-//           totalCount
-//         }
-//         following {
-//             totalCount
-//         }
-//         repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {
-//           nodes {
-//             name
-//             url
-//             forkCount
-//             updatedAt
-//             description
-//             primaryLanguage{
-//                 name
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `;
-// export function SearchUserRepositories(
-//   keyWord: string,
-//   userName: string |null
-// ) {
-//   return gql`
-// {
-//   search(
-//     query: "user:${userName} ${keyWord}  in:name is:private"
-//     type: REPOSITORY
-//     first: 100
-//   ) {
-//     nodes {
-//       ... on Repository {
-//         id
-//         name
-//         url
-//         updatedAt
-//         description
-//         isPrivate
-//         isArchived
-//         isFork
-//         isMirror
-//         isTemplate
-//         primaryLanguage {
-//           name
-//         }
-//         owner {
-//           login
-//           url
-//         }
-        
-//       }
-//     }
-//   }
-// }
-// `};

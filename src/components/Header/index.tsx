@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react';
-import { Active, Collapse, Len, Navbar, RightNav } from './styles';
+import { Toggle } from '../../hooks/CustomHooks/DarkMode';
+import { Active, Collapse, Len, Navbar, LeftNav } from './styles';
 
 // Interface for HeaderProps with a single property length of type number
 export interface HeaderProps {
@@ -11,13 +12,15 @@ export interface HeaderProps {
 function Header(props: HeaderProps) {
 
     const { length } = props;// Destructuring the length property from props object
-    
+
     return (
         <Navbar className="navbar navbar-expand-lg navbar-light border-bottom mt-2 ">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <RightNav/>
+            <LeftNav>
+                
+            </LeftNav>
 
             <Collapse className="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">

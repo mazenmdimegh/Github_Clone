@@ -14,7 +14,7 @@ export const Len = styled.span`
     padding: 4px 5px 4px 5px;
     font-size: 11px;
 `;
-export const RightNav = styled.div`
+export const LeftNav = styled.div`
     height: 20px;
     min-width: 444px;
     max-width: 471px;

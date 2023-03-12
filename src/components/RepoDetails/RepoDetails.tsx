@@ -17,7 +17,7 @@ function RepoDetails(props: ChildComponentProps) {
 
     // Extracting props
     const { repos, isLoading } = props;
-    
+
     // Defining state variables
     const [languageName, setLanguageName] = useState<null | Record<string, any>>();
 
@@ -25,14 +25,12 @@ function RepoDetails(props: ChildComponentProps) {
         if (repos) {
             setLanguageName((repos.primaryLanguage))
         }
-        // languageName ?console.log('colorr',languages[languageName["name"]["color"]]) : console.log("no Color");
 
     }, []);
-    // languageName ?console.log('colorr',languages[languageName["name"]]["color"]) : console.log("no Color");
 
     return (
         <div>
-            // If repos are available, render the following
+            {/*  If repos are available, render the following */}
             {repos ? <div className='d-flex border-bottom justify-content-between py-3'>
                 <div>
                     <div className='d-flex align-items-baseline'>
