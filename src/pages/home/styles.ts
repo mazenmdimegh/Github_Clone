@@ -20,7 +20,7 @@ export const BtnPrimary  = styled.button`
   `;
 export const Formm  = styled.form`
   padding: 20px;
-  background-color: white;
+  background-color: rgb(59 138 151);
   border-radius: 20px;
   width: 350px;    
   margin-top: 20px ;

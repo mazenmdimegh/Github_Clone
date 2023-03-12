@@ -106,8 +106,11 @@ export const Edit = styled.button`
     }
   `;
 export const RightSideWrapper = styled.div`
-width: 100%;
-max-width: 900px;
+    width: 100%;
+    max-width: 900px;
+    >article{
+      margin:20px 0;
+    }
   `;
 export const LeftSIdeWrapper = styled.div`
     z-index: 2;

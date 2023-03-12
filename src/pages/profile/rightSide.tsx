@@ -5,6 +5,7 @@ import RepoDetails from '../../components/RepoDetails/RepoDetails'
 import { GetUserDetails, SearchUserRepositoriesBytypeAndByLanguage } from '../../queries/queries';
 import { Button, Clear, Container, Dropdown, DropdownItem, DropdownLanguage, Results, RightSideWrapper, Select, FormControlWrapper, BtnGroupp, BtnGrouppBtn } from './styles';
 import noRep from "../../assets/images/noRepositories.png"
+import GitHubCalendar from 'react-github-calendar';
 
 const RightSide: React.FC = () => {
 
@@ -205,7 +206,7 @@ const RightSide: React.FC = () => {
           />
         </div>
       }
-
+      <GitHubCalendar username="mazenmdimegh" />
     </RightSideWrapper>
   )
 }
