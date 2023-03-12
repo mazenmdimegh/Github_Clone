@@ -6,6 +6,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { useNavigate } from 'react-router-dom'
 import { GetRepositoryCount, GetUserDetails } from '../../queries/queries'
 import Header, { HeaderProps } from '../../components/Header';
+import { SidesContainer } from './styles';
 
 
 const Profile: React.FC = () => {
@@ -45,10 +46,10 @@ const Profile: React.FC = () => {
     <div>
       <div>
         <Header length={length as HeaderProps['length']}/>
-        <div className='d-flex justify-content-center mx-lg-5 px-5'>
+        <SidesContainer className=' mx-lg-5 px-5'>
           <LeftSIde />
            <RightSide />
-        </div>
+        </SidesContainer>
       </div>
     </div>
   )

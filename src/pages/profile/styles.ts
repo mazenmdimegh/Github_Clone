@@ -106,12 +106,19 @@ export const Edit = styled.button`
     }
   `;
 export const RightSideWrapper = styled.div`
-    width: 900px;
+width: 100%;
+max-width: 900px;
   `;
 export const LeftSIdeWrapper = styled.div`
     z-index: 2;
     padding-right: 30px;
     margin-top: -38px;
+    @media(max-width:990px){
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+  }
 }
   `;
 export const FormControlWrapper = styled.div`
@@ -140,4 +147,15 @@ export const Pro = styled.p`
   font-weight: 500;
   border-color: rgb(37, 42, 138) !important;
   padding: 1px 8px;
+  `;
+export const SidesContainer = styled.div`
+  display:flex;
+  justify-content:center;
+
+  @media(max-width:990px){
+    display: block;
+  }
+  @media(max-width:500px){
+    // display: none;
+  }
   `;

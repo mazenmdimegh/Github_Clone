@@ -41,7 +41,7 @@ export const Language = styled.p`
 
 export const Title = styled.a`
     text-decoration: none;
-
+    overflow-wrap: anywhere;
     &:hover{
     text-decoration: underline;
   `;

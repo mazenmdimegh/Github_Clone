@@ -34,7 +34,7 @@ const LeftSIde: React.FC = () => {
       });
   }, []);
   return (
-    <div>
+    <div className='border-bottom'>
       {userDetails ?
       // Displaying the user details
         <LeftSIdeWrapper >
