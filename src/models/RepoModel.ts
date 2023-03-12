@@ -1,3 +1,4 @@
+// This interface defines the shape of a repository model.
 export interface RepoModel {
   id: string;
   name: string;

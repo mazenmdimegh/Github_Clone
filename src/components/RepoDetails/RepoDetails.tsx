@@ -6,19 +6,24 @@ import { languages } from '../../helpers/LanguageDictionary';
 import { RepoModel } from '../../models/RepoModel';
 import { Button, Language, LanguageColor, Public, Title } from './styles';
 
+// Defining Props interface for ChildComponent
 export interface ChildComponentProps {
     repos?: RepoModel;
     isLoading: boolean;
 }
 
+// Defining ChildComponent
 function RepoDetails(props: ChildComponentProps) {
 
+    // Extracting props
     const { repos, isLoading } = props;
+    
+    // Defining state variables
     const [languageName, setLanguageName] = useState<null | Record<string, any>>();
 
     useEffect(() => {
-        if (repos) { 
-            setLanguageName((repos.primaryLanguage)) 
+        if (repos) {
+            setLanguageName((repos.primaryLanguage))
         }
         // languageName ?console.log('colorr',languages[languageName["name"]["color"]]) : console.log("no Color");
 
@@ -27,6 +32,7 @@ function RepoDetails(props: ChildComponentProps) {
 
     return (
         <div>
+            // If repos are available, render the following
             {repos ? <div className='d-flex border-bottom justify-content-between py-3'>
                 <div>
                     <div className='d-flex align-items-baseline'>
@@ -57,6 +63,7 @@ function RepoDetails(props: ChildComponentProps) {
                 </div>
             </div>
                 :
+                // If repos are not available, render a skeleton
                 <div className='d-flex border-bottom justify-content-between py-3'>
                     <div>
                         <div className='d-flex align-items-baseline'>

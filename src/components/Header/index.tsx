@@ -1,13 +1,17 @@
-import React from 'react'
-import { FiBookOpen } from 'react-icons/fi'
 import { Icon } from '@iconify/react';
 import { Active, Collapse, Len, Navbar, RightNav } from './styles';
+
+// Interface for HeaderProps with a single property length of type number
 export interface HeaderProps {
     //   // repositories: Record<string, any>;
     length: number;
 }
-function NavBar(props: HeaderProps) {
-    const { length } = props;
+
+// Defining a functional component Header that accepts HeaderProps
+function Header(props: HeaderProps) {
+
+    const { length } = props;// Destructuring the length property from props object
+    
     return (
         <Navbar className="navbar navbar-expand-lg navbar-light border-bottom mt-2 ">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,4 +42,4 @@ function NavBar(props: HeaderProps) {
     )
 }
 
-export default NavBar
+export default Header

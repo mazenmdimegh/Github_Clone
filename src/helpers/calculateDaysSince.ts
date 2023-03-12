@@ -1,3 +1,7 @@
+
+// This function takes a date string as input and calculates the number of days since that date
+// It returns a string that represents how many days ago that date was
+
 export function calculateDaysSince(dateString: string): string {
     const now = new Date();
     const date = new Date(dateString);

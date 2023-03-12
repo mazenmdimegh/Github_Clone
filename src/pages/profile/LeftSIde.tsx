@@ -5,17 +5,15 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton from 'react-loading-skeleton';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { GetUserDetails } from '../../queries/queries';
-import { Avatar, Button, Edit, LeftSIdeWrapper, Pro } from './styles';
+import { Avatar, Edit, LeftSIdeWrapper, Pro } from './styles';
 
-// export interface LeftSideProps {
-//   userDetails: Record<string, any>;
-//   isLoading: boolean;
-// }
 
-function LeftSIde() {
+const LeftSIde: React.FC = () => {
+  
   const [userDetails, setUserDetails] = useState<Record<string, any>>();
   const token: string | null = window.sessionStorage.getItem("token")
 
+  //creating instance of Apollo client using GraphQL API URL
   const client = new ApolloClient({
     uri: 'https://api.github.com/graphql',
     headers: {
@@ -24,7 +22,7 @@ function LeftSIde() {
     cache: new InMemoryCache(),
   });
   useEffect(() => {
-    // Query choice
+    // Query for getting user details using GraphQL API
     client.query({
       query: GetUserDetails,
     })
@@ -38,6 +36,7 @@ function LeftSIde() {
   return (
     <div>
       {userDetails ?
+      // Displaying the user details
         <LeftSIdeWrapper >
           <Avatar className='position-relative' src={userDetails.avatarUrl} alt="Avatar" />
           <p className='text-secondary text-capitalize'>{userDetails.login}</p>
@@ -54,7 +53,8 @@ function LeftSIde() {
           </div>
         </LeftSIdeWrapper>
         :
-        <div className='LeftSIdeWrapper text-secondary'>
+        // Displaying a loading skeleton until the user details are loaded
+        <LeftSIdeWrapper className='text-secondary'>
           <Skeleton
             circle
             height="300px"
@@ -72,7 +72,7 @@ function LeftSIde() {
               <Pro className='border text-primary mx-2'>PRO</Pro>
             </div>
           </div>
-        </div>
+        </LeftSIdeWrapper>
       }
     </div>
   )

@@ -2,26 +2,21 @@ import React, { useEffect, useState } from 'react'
 
 import LeftSIde from './LeftSIde'
 import RightSide from './rightSide'
-// import "./Profile.scss"
-import { ApolloClient, InMemoryCache, gql, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { useNavigate } from 'react-router-dom'
 import { GetRepositoryCount, GetUserDetails } from '../../queries/queries'
-import NotFound from '../../components/NotFound'
-import NavBar, { HeaderProps } from '../../components/NavBar';
+import Header, { HeaderProps } from '../../components/Header';
 
 
 const Profile: React.FC = () => {
-  // const [data, setData] = useState<null | Record<string, any>>(null);
-  // const [repositories, setRepositories] = useState<null | Record<string, any>>(null);
-  // const [userDetails, setUserDetails] = useState<null | Record<string, any>>(null);
-  const [length, setLength] = useState(0);
-  // const [loading, setLoading] = useState(true);
-
+  
   const navigate = useNavigate();
+  //state variable to store length of repositories owned by authenticated user
+  const [length, setLength] = useState(0);
+  //retrieve token from session storage
   const token: string | null = window.sessionStorage.getItem("token")
-  // console.log(token)
 
-  //Headers of the Http Request
+  //creating instance of Apollo client using GraphQL API URL
   const client = new ApolloClient({
     uri: 'https://api.github.com/graphql',
     headers: {
@@ -31,15 +26,17 @@ const Profile: React.FC = () => {
   });
 
   useEffect(() => {
-    //Query choice
+    //query to retrieve total count of repositories owned by authenticated user
     client.query({
       query: GetRepositoryCount,
     })
       .then(result => {
+        //setting length state variable with total count of repositories
         setLength(result.data["viewer"].repositories.totalCount)
       })
       .catch(error => {
         console.error(error);
+        //navigating to NotFound page if there is an error
         navigate('/NotFound')
       });
   }, []);
@@ -47,7 +44,7 @@ const Profile: React.FC = () => {
   return (
     <div>
       <div>
-        <NavBar length={length as HeaderProps['length']}/>
+        <Header length={length as HeaderProps['length']}/>
         <div className='d-flex justify-content-center mx-lg-5 px-5'>
           <LeftSIde />
            <RightSide />

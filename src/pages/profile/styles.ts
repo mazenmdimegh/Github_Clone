@@ -84,6 +84,7 @@ export const Button = styled.button`
     &:hover {
         background-color: #f2efef;
         color: rgb(82, 82, 82);
+        color: #000;
         border-color: #d1d0d0;
     }
   `;
@@ -100,7 +101,7 @@ export const Edit = styled.button`
     border-radius: 6px !important;
     &:hover {
         background-color: #f2efef;
-        color: rgb(82, 82, 82);
+        color: #000;
         border-color: #d1d0d0;
     }
   `;
