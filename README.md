@@ -51,7 +51,7 @@ To run the test suite, you need to make sure that the dependencies are installed
 
 ### Deployment
 
-The project is deployed [here](https://github-clone-chi-lemon.vercel.app/).
+The project is deployed [here](https://github-clone-mazenmdimegh.vercel.app/).
 
 ### Feedback
 
