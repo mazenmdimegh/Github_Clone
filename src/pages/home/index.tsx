@@ -9,6 +9,21 @@ const Home: React.FC = () => {
   // Use navigate hook from react-router-dom
   const navigate = useNavigate();
 
+  // Handle form submission
+  const handleSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const target = e.target as typeof e.target & {
+      token: { value: string };
+    };
+    const token = target.token;
+    if (token != undefined) {
+      //store The Token in The Session Storage
+      window.sessionStorage.setItem("token", token.value)
+      // Navigate to the profile page
+
+    }
+    navigate('/profile');
+  };
   // Render the following elements
   return (
     <HomeContainer>
@@ -16,23 +31,10 @@ const Home: React.FC = () => {
       <h3>welcome to Github</h3>
       <div className='formContainer'>
         <Formm
-          // Handle form submission
-          onSubmit={(e: React.SyntheticEvent) => {
-            e.preventDefault();
-            const target = e.target as typeof e.target & {
-              token: { value: string };
-            };
-            const token = target.token.value;
-            if (token != "") {
-              //store The Token in The Session Storage
-              window.sessionStorage.setItem("token", token)
-              // Navigate to the profile page
-              navigate('/profile');
-            }
-          }}>
+          onSubmit={handleSubmit}>
           <div className="form-group">
             <Label htmlFor="exampleInputEmail1">Your Github Personal Token :</Label>
-            <input type="text" name="token" className="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Token" />
+            <input type="text" name="token" className="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="token" />
           </div>
           <BtnPrimary type="submit" className="btn btn-primary w-100">Submit</BtnPrimary>
         </Formm>
